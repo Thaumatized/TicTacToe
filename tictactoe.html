@@ -1,0 +1,124 @@
+<style>
+    .tictactoe_table
+    {
+        width: 35vw;
+        Display: inline-block;
+        background-color: #AA56FF;
+        font-size: 10vw;
+        border-radius: 0;
+    }
+
+    .tictactoe_box
+    {
+        position: relative;
+        background-color: #252525;
+        padding-top: 32%;
+        font-size: 100%;
+
+
+        width: 12vw;
+    }
+
+    .tictactoe_text
+    {
+        margin: 0;
+        height: 100%;
+        position:  absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        text-align: center;
+        font-size: 10vw;
+    }
+
+    @media only screen and (max-width: 99vh) {
+        .tictactoe_table
+        {
+            width: 60vw;
+        }
+
+        .tictactoe_box
+        {
+            width: 20vw;
+        }
+
+		.tictactoe_text
+		{
+			font-size: 18vw;
+		}
+    }
+</style>
+<div class="divmain">
+	<h2>Tic Tac Toe</h2>
+	<div class="divsub" id="DevControls" style="display:none">
+		<h1 class="h1">Dev Controls</h2>
+		<input type="checkbox" id="AutoReset" name="AutoReset" onClick="EvaluateDebug()">
+		<label for="AutoReset">Autoreset</label><br>
+		<input type="checkbox" id="StopOnX" name="StopOnX" style="margin-left: 25px" onClick="EvaluateDebug()">
+		<label for="StopOnX">Stop if X won</label><br>
+		<input type="checkbox" id="StopOn0" name="StopOn0" style="margin-left: 25px" onClick="EvaluateDebug()">
+		<label for="StopOn0">Stop if 0 Won</label><br>
+		<input type="checkbox" id="StopOnTie" name="StopOnTie" style="margin-left: 25px" onClick="EvaluateDebug()">
+		<label for="StopOnTie">Stop on stalemate</label><br>
+		<label for="MaxTries" style="margin-left: 25px">MaxTries:</label>
+		<input type="number" id="MaxTries" name="MaxTries" onClick="EvaluateDebug()" value="0"><br><br>
+		<a class="link" onClick="FirstWeird()">Impossible debug</a>
+	</div>
+	<a class="link" onClick="Reset();">Reset board</a><br><br>
+	<table style="width: 100%;">
+		<tr>
+			<td><label for="bot_x">X-Bot:</label></td>
+			<td>
+				<select name="bot_x" id="bot_x" onchange="ChangeDifficulty('X', this)">
+					<option value="none">Player</option>
+					<option value="random">Random</option>
+					<option value="easy">Easy</option>
+					<option value="normal">Normal</option>
+					<option value="hard">Hard</option>
+					<option value="impossible">Impossible</option>
+				</select>
+			</td>
+		</tr>
+		<tr style="background-color: transparent;">
+			<td><label for="bot_0">0-Bot:</label></td>
+			<td>
+				<select name="bot_0" id="bot_0" onchange="ChangeDifficulty('0', this)">
+					<option value="none">Player</option>
+					<option value="random">Random</option>
+					<option value="easy">Easy</option>
+					<option value="normal">Normal</option>
+					<option value="hard">Hard</option>
+					<option value="impossible">Impossible</option>
+				</select>
+			</td>
+		</tr>
+		<tr><td><br><br><br></td></tr>
+		<tr>
+			<td><p class="text" id="XWins" style="float:right; margin: 1vw;">X Wins: 0</p></td>
+			<td><p class="text" id="0Wins" style="margin: 1vw;">0 Wins: 0</p></td>
+		</tr>
+	</table>
+	<br>
+	<br>
+	<div class="ImgHolder">
+		<table class="tictactoe_table">
+			<tr>
+				<td class="tictactoe_box" onClick="Clicked(0)" id="0"><p class="tictactoe_text" id="0_text"></p></td>
+				<td class="tictactoe_box" onClick="Clicked(1)" id="1"><p class="tictactoe_text" id="1_text"></p></td>
+				<td class="tictactoe_box" onClick="Clicked(2)" id="2"><p class="tictactoe_text" id="2_text"></p></td>
+			</tr>
+			<tr>
+				<td class="tictactoe_box" onClick="Clicked(3)" id="3"><p class="tictactoe_text" id="3_text"></p></td>
+				<td class="tictactoe_box" onClick="Clicked(4)" id="4"><p class="tictactoe_text" id="4_text"></p></td>
+				<td class="tictactoe_box" onClick="Clicked(5)" id="5"><p class="tictactoe_text" id="5_text"></p></td>
+			</tr>
+			<tr>
+				<td class="tictactoe_box" onClick="Clicked(6)" id="6"><p class="tictactoe_text" id="6_text"></p></td>
+				<td class="tictactoe_box" onClick="Clicked(7)" id="7"><p class="tictactoe_text" id="7_text"></p></td>
+				<td class="tictactoe_box" onClick="Clicked(8)" id="8"><p class="tictactoe_text" id="8_text"></p></td>
+			</tr>
+		</table>
+	</div>
+</div>
+<script src="tictactoe.js"></script>
